@@ -1,0 +1,32 @@
+[
+  {
+    "case_name": "GET请求-JSON数据验证",
+    "description": "使用JSON数据测试GET请求",
+    "keyword": "get_request",
+    "params": {
+      "url": "https://httpbin.org/get",
+      "params": {
+        "name": "张三",
+        "age": "25"
+      }
+    },
+    "expected": {
+      "status_code": 200
+    }
+  },
+  {
+    "case_name": "POST请求-JSON数据验证",
+    "description": "使用JSON数据测试POST请求",
+    "keyword": "post_request",
+    "params": {
+      "url": "https://httpbin.org/post",
+      "data": {
+        "username": "张三",
+        "password": "test123"
+      }
+    },
+    "expected": {
+      "status_code": 200
+    }
+  }
+] 

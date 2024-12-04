@@ -1,0 +1,78 @@
+- case_name: "测试GET请求"
+  description: "测试httpbin的GET接口，获取查询参数"
+  url: "https://httpbin.org/get"
+  method: "GET"
+  params:
+    name: "张三"
+    age: "25"
+  expected_response:
+    status_code: 200
+    body:
+      args:
+        name: "张三"
+        age: "25"
+  extract:
+    user_name: "$.body.args.name"
+
+- case_name: "测试POST请求-表单数据"
+  description: "测试httpbin的POST接口，发送表单数据"
+  url: "https://httpbin.org/post"
+  method: "POST"
+  headers:
+    Content-Type: "application/x-www-form-urlencoded"
+  body:
+    username: "{user_name}"
+    password: "test123"
+  expected_response:
+    status_code: 200
+    body:
+      form:
+        username: "张三"
+        password: "test123"
+  extract:
+    form_data: "$.body.form"
+
+- case_name: "测试PUT请求-JSON数据"
+  description: "测试httpbin的PUT接口，发送JSON数据"
+  url: "https://httpbin.org/put"
+  method: "PUT"
+  headers:
+    Content-Type: "application/json"
+  body:
+    user_info:
+      name: "{user_name}"
+      age: 25
+      hobbies: ["读书", "运动"]
+  expected_response:
+    status_code: 200
+  extract:
+    json_data: "$.body.json"
+
+- case_name: "测试请求头信息"
+  description: "测试httpbin的headers接口，验证请求头"
+  url: "https://httpbin.org/headers"
+  method: "GET"
+  headers:
+    Custom-Header: "测试头部"
+    User-Agent: "Python Test Framework"
+  expected_response:
+    status_code: 200
+
+- case_name: "测试响应状态码"
+  description: "测试httpbin的状态码接口"
+  url: "https://httpbin.org/status/201"
+  method: "GET"
+  expected_response:
+    status_code: 201
+
+- case_name: "测试Basic认证"
+  description: "测试httpbin的Basic认证接口"
+  url: "https://httpbin.org/basic-auth/user/pass"
+  method: "GET"
+  headers:
+    Authorization: "Basic dXNlcjpwYXNz"  # user:pass的Base64编码
+  expected_response:
+    status_code: 200
+    body:
+      authenticated: true
+      user: "user" 

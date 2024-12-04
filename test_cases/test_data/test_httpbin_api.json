@@ -1,0 +1,37 @@
+[
+  {
+    "case_name": "测试GET请求",
+    "description": "测试httpbin的GET接口",
+    "keyword": "get_request",
+    "params": {
+      "url": "https://httpbin.org/get",
+      "params": {
+        "name": "张三",
+        "age": "25"
+      }
+    },
+    "expected": {
+      "status_code": 200,
+      "response.args.name": "张三"
+    }
+  },
+  {
+    "case_name": "测试POST请求",
+    "description": "测试httpbin的POST接口",
+    "keyword": "post_request",
+    "params": {
+      "url": "https://httpbin.org/post",
+      "data": {
+        "username": "张三",
+        "password": "test123"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    "expected": {
+      "status_code": 200,
+      "response.json.username": "张三"
+    }
+  }
+] 

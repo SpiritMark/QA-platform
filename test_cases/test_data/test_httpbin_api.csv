@@ -1,0 +1,3 @@
+case_name,description,keyword,params,expected
+测试GET请求,测试httpbin的GET接口,get_request,{"url":"https://httpbin.org/get","params":{"name":"张三"}},{"status_code":200}
+测试POST请求,测试POST接口,post_request,{"url":"https://httpbin.org/post","data":{"username":"张三"}},{"status_code":200} 

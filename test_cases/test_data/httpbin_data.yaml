@@ -1,0 +1,21 @@
+- case_name: "GET请求-验证基本参数"
+  description: "测试GET请求基本参数处理"
+  keyword: "get_request"
+  params:
+    url: "https://httpbin.org/get"
+    params:
+      name: "张三"
+      age: "25"
+  expected:
+    status_code: 200
+
+- case_name: "POST请求-验证请求体"
+  description: "测试POST请求体处理"
+  keyword: "post_request"
+  params:
+    url: "https://httpbin.org/post"
+    data:
+      username: "张三"
+      password: "test123"
+  expected:
+    status_code: 200 
